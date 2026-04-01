@@ -56,4 +56,4 @@ Client-side persistence (localStorage + sessionStorage) and simple cloud sync (F
 Visual data display using Chart.js and building small gamification UX
 
 
-### 🚀 Live Demo :
+### 🚀 Live Demo : https://yusufkosardev.github.io/Movie-Finder-Project/
