@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MovieFinder — Search Movies</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header" role="banner">
+    <div class="container header-inner">
+      <h1 class="logo">🎬 MovieFinder</h1>
+
+      <div class="controls" role="search" aria-label="Search movies">
+        <input id="searchInput" type="search" placeholder="Search for a movie (e.g. Joker)" aria-label="Search movies" />
+        <button id="searchBtn" aria-label="Search">Search</button>
+        <button id="favoritesBtn" aria-pressed="false" title="View favorites">★ Favorites <span id="favCount" class="fav-count">0</span></button>
+        <button id="chartBtn" title="Show favorites chart">📊</button>
+        <button id="themeToggle" title="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="main" role="main">
+    <div id="status" class="status" aria-live="polite"></div>
+
+    
+    <ul id="moviesContainer" class="movies-list" aria-live="polite"></ul>
+
+    
+    <div class="more-wrap">
+      <button id="loadMoreBtn" class="btn-secondary">Load more</button>
+    </div>
+
+   
+    <div id="gamify" class="gamify"></div>
+  </main>
+
+  
+  <div id="modal" class="modal" role="dialog" aria-hidden="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-panel" role="document">
+      <button id="modalClose" class="modal-close" aria-label="Close dialog">✕</button>
+      <div id="modalContent" class="modal-content"></div>
+    </div>
+  </div>
+
+  
+  <div id="chartModal" class="modal" role="dialog" aria-hidden="true" aria-labelledby="chartTitle">
+    <div class="modal-backdrop" id="chartBackdrop"></div>
+    <div class="modal-panel" role="document">
+      <button id="chartClose" class="modal-close" aria-label="Close chart">✕</button>
+      <div class="modal-content" style="flex-direction:column; gap:12px;">
+        <h2 id="chartTitle">Favorites Analytics</h2>
+        <canvas id="favChart" width="700" height="400"></canvas>
+        <div style="display:flex; gap:8px; margin-top:6px;">
+          <button id="exportFavs" class="btn btn-ghost">Export favorites (JSON)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  
+  <script>
+    
+    const firebaseConfig = {
+      apiKey: "YOUR_FIREBASE_APIKEY",
+      authDomain: "YOUR_FIREBASE_AUTHDOMAIN",
+      projectId: "YOUR_FIREBASE_PROJECTID",
+      
+    };
+
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <script src="index.js" defer></script>
+</body>
+</html>
